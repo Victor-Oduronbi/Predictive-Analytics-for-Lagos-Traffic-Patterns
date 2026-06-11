@@ -1,8 +1,10 @@
 # 🚗 Lagos Traffic Congestion Engine & Predictive Analytics
 
-An end-to-end Machine Learning web platform that quantifies urban transit gridlock severity and predicts economic time loss (lost man-hours) along major Lagos transit corridors. The engine is powered by a Scikit-Learn Multi-Model Stacking Ensemble and served via an interactive Streamlit UI.
+An end-to-end Machine Learning web platform that quantifies urban transit gridlock severity and predicts economic time loss (lost man-hours) along major Lagos transit corridors. The engine is powered by a Scikit-Learn Multi-Model Stacking Ensemble and served via an interactive Streamlit UI featuring live 24-hour predictive trending charts.
+
+🔗 [**Live Dashboard Link**:](https://predictive-analytics-for-lagos-traffic-patterns-jvczcesb3ozwgc.streamlit.app/#lagos-traffic-congestion-engine)
 <p align="center">
-  <img width="1366" height="766" alt="Lagos Traffic Predictor - Google Chrome 6_11_2026 12_45_02 AM" src="https://github.com/user-attachments/assets/421ca99d-40f0-4ad8-827c-2a8818889d24" />
+  <img width="1366" height="766" alt="Google Search - Google Chrome 6_11_2026 2_11_00 AM" src="https://github.com/user-attachments/assets/cce38830-f8e4-4722-bdb0-128140d18d9f" />
   <br>
   <b>Lagos Traffic Engine Dashboard</b>
 </p>
@@ -22,12 +24,15 @@ Instead of using generic open datasets, this engine features structured vectors 
 
 ### 2. Feature Engineering Suite
 * **Cyclic Trigonometric Time Encoding**: Converted standard hours (0–23) into two-dimensional circular space coordinates (`Hour_Sin` and `Hour_Cos`). This forces the algorithm to recognize that Hour 23 seamlessly connects to Hour 0, matching real-world transit cycles.
-* **Feature Standardization**: Implemented Scikit-Learn's `StandardScaler` fitted strictly on training slices to prevent data leakage while equalizing disparate feature scales.
+* **Feature Standardization**: Implemented Scikit-Learn's `StandardScaler` fitted natively within the deployment pipeline to maintain feature scale equality across disparate inputs without data leakage.
 
 ### 3. Multi-Model Stacking Ensemble
 To capture complex, multiplicative penalties that linear models fail to resolve, the engine deploys a heterogeneous machine learning stack:
 * **Base Regressors**: `RandomForestRegressor` (Ensemble Trees) + `GradientBoostingRegressor` (Iterative Residual Correction).
 * **Meta-Estimator**: A `Ridge` linear regression layer that learns how to optimally blend the predictions of both base models to minimize Mean Absolute Error (MAE).
+
+### 4. Interactive Live 24-Hour Analytics Trend Overlay
+The pipeline leverages point-inference iteration to generate full-day simulation data arrays dynamically based on active user runtime parameters, printing out real-time vector graphs inside the UI dashboard.
 
 ---
 
@@ -41,20 +46,10 @@ cd lagos-traffic-engine
 
 2. Install dependencies:
 ```bash
-pip install pandas numpy scikit-learn joblib streamlit
+pip install pandas numpy scikit-learn streamlit
 ```
 
-3. Train the Stacked Ensemble and generate artifacts:
-```bash
-python train_stack.py
-```
-
-4. Launch the local Streamlit Web Server:
+3. Launch the Streamlit Web App Server:
 ```bash
 streamlit run app.py
 ```
-
----
-
-## 📊 Key Insights & Explainability
-Feature Importance Extraction (FIE) verifies that the Stacking Ensemble accurately identifies vehicular volume during peak commuting hours as the primary gridlock driver (~65% importance), while flagging rainfall indicators as the most volatile compound multiplier (~20% importance). 
