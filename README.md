@@ -33,6 +33,11 @@ To capture complex, multiplicative penalties that linear models fail to resolve,
 
 ### 4. Interactive Live 24-Hour Analytics Trend Overlay
 The pipeline leverages point-inference iteration to generate full-day simulation data arrays dynamically based on active user runtime parameters, printing out real-time vector graphs inside the UI dashboard.
+<p align="center">
+<img width="1366" height="766" alt="Streamlit - Google Chrome 6_11_2026 2_40_29 AM" src="https://github.com/user-attachments/assets/40430618-ed92-4ae3-ab2d-aaf39f1632b3" />
+  <br>
+  <b>Lagos Traffic Engine Dashboard</b>
+</p>
 
 ---
 
