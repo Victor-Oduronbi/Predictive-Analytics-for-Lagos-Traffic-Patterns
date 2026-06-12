@@ -25,6 +25,13 @@ Instead of using generic open datasets, this engine features structured vectors 
 ### 2. Feature Engineering Suite
 * **Cyclic Trigonometric Time Encoding**: Converted standard hours (0–23) into two-dimensional circular space coordinates (`Hour_Sin` and `Hour_Cos`). This forces the algorithm to recognize that Hour 23 seamlessly connects to Hour 0, matching real-world transit cycles.
 * **Feature Standardization**: Implemented Scikit-Learn's `StandardScaler` fitted natively within the deployment pipeline to maintain feature scale equality across disparate inputs without data leakage.
+<p align="center">
+  <img width="988" height="590" alt="image" src="https://github.com/user-attachments/assets/8e3fd729-45e7-4b81-8062-66867b7b1d5c" />
+  <br>
+  <b>Feature Importance Chart</b>
+</p>
+
+
 
 ### 3. Multi-Model Stacking Ensemble
 To capture complex, multiplicative penalties that linear models fail to resolve, the engine deploys a heterogeneous machine learning stack:
